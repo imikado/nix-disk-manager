@@ -28,10 +28,6 @@ fi
 ###############################################################################
 hardware_file="/etc/nixos/hardware-configuration.nix"
 
-# Sauvegarde de sécurité
-cp "$hardware_file" "$hardware_file.bak"
-e_warning "Une sauvegarde a été créée : $hardware_file.bak"
-
 sed -i '/^}/i \
   fileSystems."'"$mount_point"'" = {\
     device = "/dev/disk/by-uuid/'"$uuid"'";\
