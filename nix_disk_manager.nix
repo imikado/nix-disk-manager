@@ -7,8 +7,8 @@ flutter.buildFlutterApplication rec {
 
   src = fetchurl {
 
-    url = "https://github.com/imikado/nix-disk-manager/archive/refs/tags/1.4.0.tar.gz";
-    sha256 = "sha256-2fdef9e87988c49f6332d8020eb3f5492e3a47c2f3fac52a167cd3600d7f7887;
+    url = "https://github.com/imikado/nix-disk-manager/archive/refs/tags/1.4.1.tar.gz";
+    sha256 = "sha256-deca3a594e2a8dbd868677ae0e717c9de355c2e34908f69f834d5919fb9f4565;
   };
 
   autoPubspecLock = ./pubspec.lock;
