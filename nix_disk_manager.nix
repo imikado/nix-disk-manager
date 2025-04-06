@@ -3,12 +3,12 @@
 # Define the Flutter app package
 flutter.buildFlutterApplication rec {
   pname = "nix_disk_manager";
-  version = "1.1.2";
+  version = "1.4.0";
 
   src = fetchurl {
 
-    url = "https://codeberg.org/imikado/nix-disk-manager/archive/1.3.1.tar.gz";
-    sha256 = "sha256-53d3f4094afe7b565614510e7e6d3055577cadc7675260d61bd0b1be67016da0;
+    url = "https://github.com/imikado/nix-disk-manager/archive/refs/tags/1.4.0.tar.gz";
+    sha256 = "sha256-2fdef9e87988c49f6332d8020eb3f5492e3a47c2f3fac52a167cd3600d7f7887;
   };
 
   autoPubspecLock = ./pubspec.lock;
