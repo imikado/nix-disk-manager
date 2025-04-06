@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:libadwaita/libadwaita.dart';
 import 'package:nix_disk_manager/Commands/system_commands.dart';
 import 'package:nix_disk_manager/Entity/disk_entity.dart';
 import 'package:nix_disk_manager/Entity/partition_details_entity.dart';
@@ -262,16 +263,12 @@ class _DiskSelectedViewState extends State<DiskSelectedView> {
                                   .tr('disk_selected_mount_point_prompt')),
                               SizedBox(
                                 width: 200,
-                                child: TextField(
+                                child: AdwTextField(
                                   controller: mountPointController,
-                                  decoration: InputDecoration(
-                                    hintText: LocalizationApi()
-                                        .tr('disk_selected_mount_point_hint'),
-                                  ),
                                 ),
                               ),
                               if (stateDisplayMountPointButton)
-                                ElevatedButton(
+                                AdwButton.pill(
                                   onPressed: () {
                                     createMountPoint(mountPointController.text);
                                   },
@@ -293,14 +290,21 @@ class _DiskSelectedViewState extends State<DiskSelectedView> {
                           if (stateMountPointMessage.isNotEmpty)
                             Row(
                               children: [
-                                ElevatedButton.icon(
-                                  icon: const Icon(Icons.cancel),
-                                  onPressed: () {
-                                    cancelCreateMountMoint();
-                                  },
-                                  label: Text(LocalizationApi()
-                                      .tr('disk_selected_cancel_retry')),
-                                )
+                                AdwButton.pill(
+                                    onPressed: () {
+                                      cancelCreateMountMoint();
+                                    },
+                                    child: Row(
+                                      spacing: 5,
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        const Icon(Icons.cancel),
+                                        Text(LocalizationApi()
+                                            .tr('disk_selected_cancel_retry')),
+                                      ],
+                                    ))
                               ],
                             )
                         ],

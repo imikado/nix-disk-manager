@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:libadwaita/libadwaita.dart';
 import 'package:nix_disk_manager/Api/localization_api.dart';
 
 class HomeView extends StatelessWidget {
@@ -23,10 +24,18 @@ class HomeView extends StatelessWidget {
       SizedBox(
         height: 20,
       ),
-      ElevatedButton.icon(
-          label: Text(LocalizationApi().tr('start')),
-          onPressed: handleGoToDiskList,
-          icon: Icon(Icons.start))
+      SizedBox(
+          width: 200,
+          child: AdwButton.pill(
+            onPressed: handleGoToDiskList,
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                spacing: 10,
+                children: [
+                  Text(LocalizationApi().tr('start')),
+                  Icon(Icons.start_sharp)
+                ]),
+          ))
     ]));
   }
 }

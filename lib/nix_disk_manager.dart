@@ -1,4 +1,5 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:adwaita/adwaita.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:nix_disk_manager/Api/localization_api.dart';
@@ -43,8 +44,8 @@ class NixDiskManagerState extends State<NixDiskManager> {
   @override
   Widget build(BuildContext context) {
     return AdaptiveTheme(
-        light: ThemeData.light(useMaterial3: true),
-        dark: ThemeData.dark(useMaterial3: true),
+        light: AdwaitaThemeData.light(),
+        dark: AdwaitaThemeData.dark(),
         initial: widget.savedThemeMode,
         builder: (theme, darkTheme) => MaterialApp(
             theme: theme,

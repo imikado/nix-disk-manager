@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:adaptive_theme/adaptive_theme.dart';
@@ -11,6 +12,7 @@ import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 import 'package:logging/logging.dart';
 import 'package:nix_disk_manager/Api/localization_api.dart';
+import 'package:window_manager/window_manager.dart';
 
 final _log = Logger('Main');
 
@@ -71,6 +73,24 @@ Future<void> main(List<String> arguments) async {
 
   final AdaptiveThemeMode savedThemeMode =
       await AdaptiveTheme.getThemeMode() ?? AdaptiveThemeMode.light;
+
+  await windowManager.ensureInitialized();
+
+  const windowOptions = WindowOptions(
+    size: Size(1000, 600),
+    minimumSize: Size(400, 450),
+    skipTaskbar: false,
+    backgroundColor: Colors.transparent,
+    titleBarStyle: TitleBarStyle.normal,
+    title: 'Nix disk manager',
+  );
+
+  unawaited(
+    windowManager.waitUntilReadyToShow(windowOptions, () async {
+      await windowManager.show();
+      await windowManager.focus();
+    }),
+  );
 
   runApp(NixDiskManager(savedThemeMode: savedThemeMode));
 }
